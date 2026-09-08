@@ -59,7 +59,6 @@ function App() {
   const [souls, setSouls] = useState(0);
   const [soulsGastos, setSoulsGastos] = useState(0);
   const [inventario, setInventario] = useState([]);
-  const [qteVitorias, setQteVitorias] = useState(0);
   const [tempoNoSite, setTempoNoSite] = useState(0);
   const [perfil, setPerfil] = useState(null);
   const [habilidades, setHabilidades] = useState([]);
@@ -98,33 +97,11 @@ function App() {
 
   const saldoSouls = souls - soulsGastos;
 
-  const SLOTS_LIVRES = 9;
-  const LIMITES_SLOT_TRANCADO = [1, 3, 6];
-  const capacidade = SLOTS_LIVRES + LIMITES_SLOT_TRANCADO.filter((n) => qteVitorias >= n).length;
-
   function comprarItem(item) {
-    if (inventario.some((i) => i.nome === item.nome)) return;
-    if (inventario.length >= capacidade) return;
+    if (inventario.includes(item.nome)) return;
     if (saldoSouls < item.custo) return;
     setSoulsGastos((g) => g + item.custo);
-    setInventario((inv) => [...inv, { nome: item.nome, custo: item.custo }]);
-  }
-
-  function venderItem(nome) {
-    const item = inventario.find((i) => i.nome === nome);
-    if (!item) return;
-    setSoulsGastos((g) => Math.max(0, g - Math.floor(item.custo / 2)));
-    setInventario((inv) => inv.filter((i) => i.nome !== nome));
-  }
-
-  function trocarItem(nomeVendido, comprado) {
-    const vendido = inventario.find((i) => i.nome === nomeVendido);
-    if (!vendido) return;
-    setSoulsGastos((g) => Math.max(0, g - Math.floor(vendido.custo / 2)) + comprado.custo);
-    setInventario((inv) => [
-      ...inv.filter((i) => i.nome !== nomeVendido),
-      { nome: comprado.nome, custo: comprado.custo },
-    ]);
+    setInventario((inv) => [...inv, item.nome]);
   }
 
   useEffect(() => {
@@ -183,10 +160,6 @@ function App() {
 
     function lidarDigito(e) {
       if (qte.status !== "ativa") return;
-      if (e.key === " ") {
-        e.preventDefault();
-        return;
-      }
       if (e.key.length > 1 && e.key !== "Backspace") return;
 
       if (e.key === "Backspace") {
@@ -203,7 +176,6 @@ function App() {
         setQte((q) => (q ? { ...q, status: "sucesso", ganhoSouls: calcularSouls() } : q));
         setCurtidas((c) => c + 6);
         setSouls((s) => s + calcularSouls());
-        setQteVitorias((v) => v + 1);
       }
     }
 
@@ -294,12 +266,7 @@ function App() {
         TEMAS={TEMAS}
         saldoSouls={saldoSouls}
         inventario={inventario}
-        capacidade={capacidade}
-        limitesTrancado={LIMITES_SLOT_TRANCADO}
-        qteVitorias={qteVitorias}
         onComprar={comprarItem}
-        onVender={venderItem}
-        onTrocar={trocarItem}
       />
     );
   }

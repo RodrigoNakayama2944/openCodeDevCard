@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import About from "./About.jsx";
 import mikubopImage from "./assets/images/mikubop.webp";
@@ -24,11 +24,39 @@ function App() {
   const [tema, setTema] = useState(() => {
     return localStorage.getItem("devcard-theme") || "neutral";
   });
+  const [bombTriggered, setBombTriggered] = useState(false);
+  const typedBuffer = useRef("");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", tema);
     localStorage.setItem("devcard-theme", tema);
   }, [tema]);
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (bombTriggered) return;
+      if (e.key.length > 1 && e.key !== "Backspace") return;
+
+      if (e.key === "Backspace") {
+        typedBuffer.current = typedBuffer.current.slice(0, -1);
+        return;
+      }
+
+      typedBuffer.current += e.key.toLowerCase();
+      if (typedBuffer.current.length > 20) {
+        typedBuffer.current = typedBuffer.current.slice(-20);
+      }
+
+      if (typedBuffer.current.includes("bomb")) {
+        typedBuffer.current = "";
+        setBombTriggered(true);
+        setTimeout(() => setBombTriggered(false), 4500);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [bombTriggered]);
 
   function trocarTema() {
     const atual = TEMAS.findIndex((t) => t.id === tema);
@@ -205,6 +233,51 @@ function App() {
         <span className="patron-ring">◈</span>
         <span className="patron-label">PATRON</span>
       </aside>
+
+      {bombTriggered && (
+        <div className="bomb-overlay">
+          <div className="bomb-flash" />
+          <div className="bomb-fireball" />
+          <div className="bomb-shockwave" />
+          <div className="bomb-shockwave bomb-shockwave-2" />
+          <div className="bomb-smoke" />
+          {Array.from({ length: 40 }).map((_, i) => {
+            const ang = (Math.PI * 2 * i) / 40;
+            const dist = 80 + Math.random() * 320;
+            return (
+              <div
+                className="bomb-particle"
+                key={i}
+                style={{
+                  "--dx": `${Math.cos(ang) * dist}px`,
+                  "--dy": `${Math.sin(ang) * dist + 60}px`,
+                  "--size": `${3 + Math.random() * 8}px`,
+                  "--delay": `${Math.random() * 0.15}s`,
+                  "--dur": `${0.6 + Math.random() * 0.8}s`,
+                }}
+              />
+            );
+          })}
+          {Array.from({ length: 18 }).map((_, i) => {
+            const ang = ((Math.PI * 2 * i) / 18) + Math.random() * 0.35;
+            const dist = 120 + Math.random() * 400;
+            return (
+              <div
+                className="bomb-debris"
+                key={`d${i}`}
+                style={{
+                  "--dx": `${Math.cos(ang) * dist}px`,
+                  "--dy": `${Math.sin(ang) * dist + 120}px`,
+                  "--rot": `${Math.random() * 720}deg`,
+                  "--delay": `${Math.random() * 0.2}s`,
+                  "--size": `${4 + Math.random() * 10}px`,
+                }}
+              />
+            );
+          })}
+          <div className="bomb-text">BOOM</div>
+        </div>
+      )}
     </main>
   );
 }

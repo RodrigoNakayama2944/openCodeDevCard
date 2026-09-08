@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background:
+    linear-gradient(180deg, #0038b8 0%, #0038b8 8%, transparent 8%, transparent 92%, #0038b8 92%, #0038b8 100%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%),
+    #ffffff;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  padding: 24px;
+  position: relative;
+}
+
+.card {
+  margin: auto;
+  width: 100%;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #0038b8;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow:
+    0 24px 70px rgba(0, 56, 184, 0.15),
+    0 0 0 1px rgba(0, 56, 184, 0.1);
+  position: relative;
+}
+
+.card::before {
+  content: "✡";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: #0038b8;
+  background: white;
+  padding: 0 8px;
+  line-height: 1;
+}
+
+.side-image {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22vw;
+  max-width: 300px;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
+  border: 3px solid #0038b8;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  padding: 6px;
+  z-index: 1;
+}
+
+.side-image-left {
+  left: 24px;
+}
+
+.side-image-right {
+  right: 24px;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #0038b8;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 2.2rem;
+  color: #0038b8;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  color: #0038b8;
+}
+
+.descricao {
+  color: #374151;
+  line-height: 1.6;
+}
+
+.contador {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%);
+  border: 1px solid #0038b8;
+}
+
+.contador strong {
+  font-size: 2rem;
+  color: #0038b8;
+}
+
+.contador span {
+  color: #1e40af;
+  font-weight: 500;
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: #0038b8;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+button:hover {
+  background: #002d91;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 56, 184, 0.3);
+}
+
+.botao-secundario {
+  margin-top: 12px;
+  background: #1e40af;
+}
+
+.botao-secundario:hover {
+  background: #1e3a8a;
+}
+
+.bloco {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #bfdbfe;
+}
+
+.frase {
+  margin: 0;
+  color: #1e3a8a;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #374151;
+  line-height: 1.8;
+}
+
+ul li {
+  padding: 4px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+.erro {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+.star-of-david {
+  font-size: 48px;
+  color: #0038b8;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.israel-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.flag-stripe {
+  width: 120px;
+  height: 4px;
+  background: #0038b8;
+  border-radius: 2px;
+}
+
+.flag-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.flag-star {
+  font-size: 36px;
+  color: #0038b8;
+}
+
+.shalom-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: #0038b8;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.blessing-text {
+  margin-top: 16px;
+  padding: 12px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 10px;
+  border-left: 4px solid #0038b8;
+  color: #1e40af;
+  font-style: italic;
+  text-align: center;
+}

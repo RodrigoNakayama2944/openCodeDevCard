@@ -1,0 +1,102 @@
+PROJETO: DevLab Fundamentos - Frontend
+======================================
+
+DESCRICAO:
+Aplicacao React (Vite) que consome uma API backend em localhost:3000.
+Exibe perfil do aluno, frase motivacional e lista de habilidades.
+
+STACK:
+- React 19.2.6 + Vite 8.0.12
+- ESLint com plugins React Hooks e React Refresh
+- Estilizacao CSS customizada (Israel theme - azul/branco)
+
+ESTRUTURA:
+- src/App.jsx - Componente principal
+- src/App.css - Estilos do App
+- src/index.css - Estilos globais
+- src/main.jsx - Entry point
+- src/assets/ - Assets estaticos
+
+ENDPOINTS DA API (backend:3000):
+- GET /api/perfil - Dados do perfil (nome, turma, area, objetivo)
+- GET /api/habilidades - Lista de habilidades
+- GET /api/frase - Frase motivacional
+
+FUNCIONALIDADES:
+1. Exibe perfil do aluno (nome, turma, area, objetivo)
+2. Contador de curtidas (local state)
+3. Busca e exibe frase da API
+4. Botao para gerar nova frase
+5. Lista de habilidades da etapa
+6. Tratamento de erros e estados de carregamento
+
+ESTADO ATUAL:
+- Projeto funcional com comunicacao API
+- Tema Bebop do Deadlock aplicado
+- Perfil: Future Eternus VI (Bebop)
+- Habilidades: Exploding Uppercut, Sticky Bomb, Grapple Arm, Hyper Beam
+- Frases: Quotes do Bebop no Deadlock
+- Duas paginas: principal (DevCard) e "The Creator" (sobre o criador)
+- Navegacao por estado React
+- Sem testes implementados
+
+ALTERACOES RECENTES (20/08/2026):
+- Tema Israel aplicado em todo o frontend
+- Cores: azul #0038b8 e branco (cores da bandeira de Israel)
+- Simbolos: Estrela de David (✡), badge "SHALOM", bendicao "Baruch Hashem"
+- Bandeira de Israel estilizada no topo do card
+- Fundo branco com listras azuis no topo e base
+- Cards e botoes com esquema de cores azul/branco
+- Texto de bendicao em hebraico no final
+
+ALTERACOES BEBOP (03/09/2026):
+- Perfil alterado de "Dev em Formação" para "Future Eternus VI" (Bebop)
+- Habilidades alteradas para as abilities do Bebop no Deadlock:
+  * Ability 1: Exploding Uppercut
+  * Ability 2: Sticky Bomb
+  * Ability 3: Grapple Arm
+  * Ultimate: Hyper Beam
+- Frases alteradas para quotes do Bebop no Deadlock:
+  * "Sometimes I put these on people..."
+  * "People are always like 'ah, there's a bomb...'"
+  * "Arigato!"
+  * "I am Bebop! A scrap golem..."
+  * "Forged by the hands of a widowed..."
+  * "Bebop can string together..."
+- Projetos alterados para temas do Deadlock:
+  * Deadlock Arena
+  * Bebop's Workshop
+  * Sticky Bomb Training
+- Objetivo alterado para: "bebop? WE BEBOMBIN THESE FOOLS"
+- Area alterada para: "The Cursed Apple"
+- Frontend integrado ao endpoint unico /api/devcard (perfil, habilidades, projetos, frase)
+- Nova secao "Mini projects" adicionada ao frontend (estilizada com o tema Deadlock)
+- Fetch unificado em uma unica chamada ao /api/devcard em vez de 3 chamadas separadas
+- Projeto 1 renomeado: "Deadlock Arena" -> "Hyper Piss Beam", tipo "Hero Shooter" -> "Mid-boss", descricao alterada
+- Container principal (.hero-panel) centralizado na pagina com margin: 0 auto
+- Nova pagina "The Creator" (frontend/src/About.jsx) - info sobre o criador, vazia por enquanto, estilizada com o tema Deadlock
+- Navegacao entre paginas via estado React (sem react-router) - botao "The Creator" no footer da pagina principal
+- Estilos para a pagina About adicionados em App.css (.about-panel, .about-body, .about-title, .about-text, .footer-btn)
+- Links de GitHub adicionados na pagina About (abrem em nova aba):
+  * Personal GitHub -> https://github.com/RodrigoNakayama
+  * School GitHub -> https://github.com/RodrigoNakayama2944
+- Pagina About redesenhada seguindo a skill frontend-design:
+  * Layout "dossier" (ficha do criador) em vez de bloco generico
+  * Selo "FILE: CREATOR" no topo
+  * Estado vazio tratado como convite (texto de origem pendente)
+  * Assinatura visual: medidor de sinal animado (ORIGIN) no tema Deadlock
+
+FERRAMENTAS (03/09/2026):
+- Skill "frontend-design" (anthropics/skills) instalada globalmente na maquina (~/.agents/skills/frontend-design)
+- Comando: npx skills add https://github.com/anthropics/skills --skill frontend-design -g
+- Skill "frontend-design" instalada no nivel do projeto para OpenCode (.agents/skills/frontend-design) - copiada
+- Comando: npx skills add https://github.com/anthropics/skills --skill frontend-design -a opencode -y
+- Para ativar: reiniciar a sessao do editor/CLI OpenCode para carregar a skill
+
+DATA CRIACAO: 20/08/2026
+ULTIMA ATUALIZACAO: 03/09/2026 - Bebop theme applied
+
+REGRA IMPORTANTE:
+- NUNCA alterar nomes de arquivos, classes, divs ou identificadores existentes
+- Sempre manter os nomes/tags anteriores ao fazer mudancas
+- Apenas adicionar novos elementos, nunca renomear os existentes

@@ -1,0 +1,54 @@
+PROJETO: DevLab Fundamentos - Frontend
+======================================
+
+DESCRICAO:
+Aplicacao React (Vite) que consome uma API backend em localhost:3000.
+Exibe perfil do aluno, frase motivacional e lista de habilidades.
+
+STACK:
+- React 19.2.6 + Vite 8.0.12
+- ESLint com plugins React Hooks e React Refresh
+- Estilizacao CSS customizada (Israel theme - azul/branco)
+
+ESTRUTURA:
+- src/App.jsx - Componente principal
+- src/App.css - Estilos do App
+- src/index.css - Estilos globais
+- src/main.jsx - Entry point
+- src/assets/ - Assets estaticos
+
+ENDPOINTS DA API (backend:3000):
+- GET /api/perfil - Dados do perfil (nome, turma, area, objetivo)
+- GET /api/habilidades - Lista de habilidades
+- GET /api/frase - Frase motivacional
+
+FUNCIONALIDADES:
+1. Exibe perfil do aluno (nome, turma, area, objetivo)
+2. Contador de curtidas (local state)
+3. Busca e exibe frase da API
+4. Botao para gerar nova frase
+5. Lista de habilidades da etapa
+6. Tratamento de erros e estados de carregamento
+
+ESTADO ATUAL:
+- Projeto funcional com comunicacao API
+- Israel theme (azul/branco, Estrela de David, listras da bandeira)
+- Sem testes implementados
+- Sem rotas (SPA unica)
+
+ALTERACOES RECENTES (20/08/2026):
+- Tema Israel aplicado em todo o frontend
+- Cores: azul #0038b8 e branco (cores da bandeira de Israel)
+- Simbolos: Estrela de David (✡), badge "SHALOM", bendicao "Baruch Hashem"
+- Bandeira de Israel estilizada no topo do card
+- Fundo branco com listras azuis no topo e base
+- Cards e botoes com esquema de cores azul/branco
+- Texto de bendicao em hebraico no final
+
+DATA CRIACAO: 20/08/2026
+ULTIMA ATUALIZACAO: 20/08/2026 - Jumpscare removido
+
+REGRA IMPORTANTE:
+- NUNCA alterar nomes de arquivos, classes, divs ou identificadores existentes
+- Sempre manter os nomes/tags anteriores ao fazer mudancas
+- Apenas adicionar novos elementos, nunca renomear os existentes
